@@ -37,3 +37,18 @@ class Recipe:
                 one.quantity += ingredient.quantity
                 return
         self.ingredients.append(ingredient)
+
+    @staticmethod
+    def is_valid_ratio(ratio: float):
+        return isinstance(ratio, (int,float)) and ratio > 0
+    
+    def scale(self, ratio: float):
+        if not self.is_valid_ratio(ratio):
+            raise ValueError("Число должно быть положительным")
+        new_list = []
+        for one in self.ingredients:
+            new_quan = one.quanriry * ratio
+            new_one = Ingredient(one.name, new_quan, one.unit)
+            new_list.append(new_one)
+        return Recipe(self.title, new_list)
+        

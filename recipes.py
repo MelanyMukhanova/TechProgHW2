@@ -72,4 +72,14 @@ class ShoppingList:
         for one in scaled_rec.ingredients:
             self._items.append((one, recipe.title))
 
-        
+    def remove_recipe(self, title: str):
+        self._iems = [one for one in self._items if one[1] != title]
+    
+    def get_list(self):
+        res = {}
+        for one, title in self._iems:
+            key = (one.name, one.unit)
+            if key in res:
+                res[key] += one.quantity
+            else:
+                res[key] = one.quantity

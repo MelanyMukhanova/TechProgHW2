@@ -22,3 +22,11 @@ class Ingredient:
         if not isinstance(other, Ingredient):
             return False
         return self.name == other.name and self.unit == other.unit
+
+class Recipe:
+    def __init__(self, title: str, ingredients: list = None):
+        self.title = title
+        if ingredients is not None:
+            self.ingredients = ingredients
+        else:
+            self.ingredients = []

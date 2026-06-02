@@ -30,3 +30,10 @@ class Recipe:
             self.ingredients = ingredients
         else:
             self.ingredients = []
+    
+    def add_ingredient(self, ingredient: Ingredient):
+        for one in self.ingredients:
+            if one == ingredient:
+                one.quantity += ingredient.quantity
+                return
+        self.ingredients.append(ingredient)

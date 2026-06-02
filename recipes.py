@@ -47,8 +47,16 @@ class Recipe:
             raise ValueError("Число должно быть положительным")
         new_list = []
         for one in self.ingredients:
-            new_quan = one.quanriry * ratio
+            new_quan = one.quantity * ratio
             new_one = Ingredient(one.name, new_quan, one.unit)
             new_list.append(new_one)
         return Recipe(self.title, new_list)
-        
+    
+    def __len__(self):
+        return len(self.ingredients)
+    
+    def __str__(self):
+        res = f"Рецепт: {self.title}\nИнгредиенты:\n"
+        for one in self.ingredients:
+            res += f" -> {one}\n"
+        return res

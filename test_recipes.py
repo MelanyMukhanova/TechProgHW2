@@ -95,3 +95,16 @@ def test_invalid_portions():
         res.add_recipe(recipe, -2)
     with pytest.raises(ValueError, match = "Количество порций должно быть положительным"):
         res.add_recipe(recipe, 0)
+
+def test_correct_remove():
+    flour = Ingredient("Мука", 500, "г")
+    milk = Ingredient("Молоко", 500, "мл")
+    recipe_charl = Recipe("Charlotte", [flour, milk])
+    recipe_pie = Recipe("Pie", [flour])
+    res = ShoppingList()
+    res.add_recipe(recipe_charl, 1)
+    res.add_recipe(recipe_pie, 1)
+    assert len(res._items) == 3
+    res.remove_recipe("Charlotte")
+    assert len(res._items) == 1
+    assert res._items[0][1] == "Pie"

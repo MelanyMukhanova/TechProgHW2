@@ -86,3 +86,12 @@ def test_shop_correct_add():
     assert len(res._items) == 2
     assert res._items[0][1] == "Charlotte"
     assert res._items[1][1] == "Charlotte"
+
+def test_invalid_portions():
+    flour = Ingredient("Мука", 500, "г")
+    recipe = Recipe("Charlotte", [flour])
+    res = ShoppingList()
+    with pytest.raises(ValueError, match = "Количество порций должно быть положительным"):
+        res.add_recipe(recipe, -2)
+    with pytest.raises(ValueError, match = "Количество порций должно быть положительным"):
+        res.add_recipe(recipe, 0)

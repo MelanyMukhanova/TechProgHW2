@@ -113,3 +113,15 @@ def test_remove_nonexisting():
     res = ShoppingList()
     res.remove_recipe("Абракадабра")
     assert len(res._items) == 0
+
+def test_correct_sum_of_ingred():
+    flour = Ingredient("Мука", 500, "г")
+    recipe_charl = Recipe("Charlotte", [flour])
+    recipe_pie = Recipe("Pie", [flour])
+    res = ShoppingList()
+    res.add_recipe(recipe_charl, 1)
+    res.add_recipe(recipe_pie, 1)
+    itog = res.get_list()
+    assert len(itog) == 1
+    assert itog[0].name == "Мука"
+    assert itog[0].quantity == 1000

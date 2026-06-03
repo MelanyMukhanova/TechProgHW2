@@ -96,5 +96,15 @@ class ShoppingList:
         new_l._items = self._items + other._items
         return new_l
 
-        
-
+class DietaryRecipe(Recipe):
+    def __init__(self, title: str, diet_type: str, ingredients: list = None):
+        super().__init__(title, ingredients)
+        self.diet_type = diet_type
+    def scale(self, ratio: float):
+        if not self.is_valid_ratio(ratio):
+            raise ValueError("Ratio должно быть положительным")
+        new_sum_ingred = []
+        for one in self.ingredients:
+            new_one = Ingredient(one.name, one.quantity * ratio, one.unit)
+            new_sum_ingred.append(new_one)
+        return DietaryRecipe(self.title, self.diet_type, new_sum_ingred)

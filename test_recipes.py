@@ -63,7 +63,7 @@ def test_scale_correct():
     assert new_one.ingredients[0].quantity == 1000
     assert new_one.title == "Charlotte"
 
-def __len__():
+def test_len_correct():
     flour = Ingredient("Мука", 500, "г")
     milk = Ingredient("Молоко", 500, "мл")
     recipe = Recipe("Charlotte", [flour, milk])

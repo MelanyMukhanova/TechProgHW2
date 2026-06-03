@@ -108,3 +108,6 @@ class DietaryRecipe(Recipe):
             new_one = Ingredient(one.name, one.quantity * ratio, one.unit)
             new_sum_ingred.append(new_one)
         return DietaryRecipe(self.title, self.diet_type, new_sum_ingred)
+    def __str__(self):
+        res = f"[{self.diet_type}] {super().__str__()}"
+        return res

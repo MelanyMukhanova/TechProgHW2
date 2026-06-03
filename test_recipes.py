@@ -68,3 +68,12 @@ def __len__():
     milk = Ingredient("Молоко", 500, "мл")
     recipe = Recipe("Charlotte", [flour, milk])
     assert len(recipe) == 2
+
+def test_scale_invalid_rat():
+    flour = Ingredient("Мука", 500, "г")
+    recipe = Recipe("Charlotte", [flour])
+    with pytest.raises(ValueError, match = "Число должно быть положительным"):
+        recipe.scale(-1)
+    with pytest.raises(ValueError, match = "Число должно быть положительным"):
+        recipe.scale(0)
+

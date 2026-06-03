@@ -1,5 +1,5 @@
 import pytest
-from recipes import Ingredient
+from recipes import Ingredient, Recipe
 
 def test_ingred_correct_init():
     one = Ingredient("Мука", 500, "г")
@@ -30,3 +30,12 @@ def test_quantity_is_negative():
     one = Ingredient("Мука", 500, "г")
     with pytest.raises(ValueError, match = "Количество должно быть положительным"):
         one.quantity = -500
+
+
+def test_recipe_correct_init():
+    flour = Ingredient("Мука", 500, "г")
+    milk = Ingredient("Молоко", 500, "мл")
+    recipe = Recipe("Charlotte", [flour, milk])
+    assert recipe.title == "Charlotte"
+    assert len(recipe.ingredients) == 2
+

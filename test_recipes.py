@@ -45,3 +45,12 @@ def test_add_ingred_correct():
     recipe.add_ingredient(flour)
     assert len(recipe) == 1
     assert recipe.ingredients[0].name == "Мука"
+
+def test_add_dublicate_correct():
+    recipe = Recipe("Charlotte")
+    flour1 = Ingredient("Мука", 500, "г")
+    flour2 = Ingredient("Мука", 300, "г")
+    recipe.add_ingredient(flour1)
+    recipe.add_ingredient(flour2)
+    assert len(recipe) == 1
+    assert recipe.ingredients[0].quantity == 800

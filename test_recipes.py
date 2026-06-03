@@ -39,3 +39,9 @@ def test_recipe_correct_init():
     assert recipe.title == "Charlotte"
     assert len(recipe.ingredients) == 2
 
+def test_add_ingred_correct():
+    recipe = Recipe("Charlotte")
+    flour = Ingredient("Мука", 500, "г")
+    recipe.add_ingredient(flour)
+    assert len(recipe) == 1
+    assert recipe.ingredients[0].name == "Мука"

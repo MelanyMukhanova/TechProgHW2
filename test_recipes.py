@@ -14,3 +14,13 @@ def ingred_eq_same_nu():
     one = Ingredient("Мука", 500, "Г")
     other = Ingredient("Мука", 300, "Г")
     assert one == other
+
+def ingred_different_names():
+    one = Ingredient("Мука", 500, "Г")
+    other = Ingredient("Соль", 500, "Г")
+    assert one != other
+
+def ingred_different_units():
+    one = Ingredient("Мука", 500, "Г")
+    other = Ingredient("Мука", 500, "мг")
+    assert one != other

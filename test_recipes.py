@@ -54,3 +54,11 @@ def test_add_dublicate_correct():
     recipe.add_ingredient(flour2)
     assert len(recipe) == 1
     assert recipe.ingredients[0].quantity == 800
+
+def test_scale_correct():
+    flour = Ingredient("Мука", 500, "г")
+    recipe = Recipe("Charlotte", [flour])
+    new_one = recipe.scale(2)
+    assert recipe.ingredients[0].quantity == 500
+    assert new_one.ingredients[0].quantity == 1000
+    assert new_one.title == "Charlotte"

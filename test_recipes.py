@@ -125,3 +125,16 @@ def test_correct_sum_of_ingred():
     assert len(itog) == 1
     assert itog[0].name == "Мука"
     assert itog[0].quantity == 1000
+
+def test_sorted_correctly():
+    flour = Ingredient("Мука", 500, "г")
+    milk = Ingredient("Молоко", 500, "мл")
+    salt = Ingredient("Соль", 5, "г")
+    recipe = Recipe("Charlotte", [flour, milk, salt])
+    res = ShoppingList()
+    res.add_recipe(recipe, 1)
+    itog = res.get_list()
+    assert itog[0].name == "Молоко"
+    assert itog[1].name == "Мука"
+    assert itog[2].name == "Соль"
+

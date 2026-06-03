@@ -108,3 +108,8 @@ def test_correct_remove():
     res.remove_recipe("Charlotte")
     assert len(res._items) == 1
     assert res._items[0][1] == "Pie"
+
+def test_remove_nonexisting():
+    res = ShoppingList()
+    res.remove_recipe("Абракадабра")
+    assert len(res._items) == 0

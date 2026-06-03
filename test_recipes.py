@@ -1,5 +1,5 @@
 import pytest
-from recipes import Ingredient, Recipe
+from recipes import Ingredient, Recipe, ShoppingList
 
 def test_ingred_correct_init():
     one = Ingredient("Мука", 500, "г")
@@ -77,3 +77,12 @@ def test_scale_invalid_rat():
     with pytest.raises(ValueError, match = "Число должно быть положительным"):
         recipe.scale(0)
 
+def test_shop_correct_add():
+    flour = Ingredient("Мука", 500, "г")
+    milk = Ingredient("Молоко", 500, "мл")
+    recipe = Recipe("Charlotte", [flour, milk])
+    res = ShoppingList()
+    res.add_recipe(recipe, 2)
+    assert len(res._items) == 2
+    assert res._items[0][1] == "Charlotte"
+    assert res._items[1][1] == "Charlotte"

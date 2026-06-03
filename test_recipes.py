@@ -138,3 +138,16 @@ def test_sorted_correctly():
     assert itog[1].name == "Мука"
     assert itog[2].name == "Соль"
 
+def test_merging_correctly():
+    flour = Ingredient("Мука", 500, "г")
+    milk = Ingredient("Молоко", 500, "мл")
+    recipe_charl = Recipe("Charlotte", [flour])
+    recipe_pie = Recipe("Pie", [milk])
+    res1 = ShoppingList()
+    res1.add_recipe(recipe_charl, 1)
+    res2 = ShoppingList()
+    res2.add_recipe(recipe_pie, 1)
+    merged = res1 + res2
+    assert len(merged._items) == 2
+    assert len(res1._items) == 1
+    assert len(res2._items) == 1
